@@ -12,12 +12,12 @@ export default class Festival {
    * @param {number} limit  number of festivals to query
    * return {Promise<any>}  Promise object represents the festivals list
    */
-  getFestivals(limit = -1): Promise<any> {
+  getFestivals(limit = -1): Promise<FestivalModel[]> {
     if (!(-1 <= limit) || !(limit < 1000))
       return Promise.reject('limit must be between -1 and 1000');
     return fetch(`${this.baseUrl}&rows=${limit}`)
       .then((response) => response.json())
-      .then((response) => response.records.map((record) => record.fields))
+      .then((response: ApiResInterface<FestivalModel>) => response.records.map((record) => record.fields))
       .catch((error) => Promise.reject(error));
   }
 }
