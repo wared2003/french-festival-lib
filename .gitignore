@@ -2,5 +2,9 @@
 ./src/index.js
 node_modules
 dist
+**/*.js.*
+**/*.js
+index.ts
+n
 
 
